@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import wonjjong.shoppingmall.service.MemberService;
 
 @Controller
@@ -16,14 +14,38 @@ import wonjjong.shoppingmall.service.MemberService;
 @RequiredArgsConstructor
 public class HelloController {
 
+
     private final MemberService memberService;
 
-    @GetMapping("/")
+    /**
+     *
+     * ResponseBody test method
+     */
+    @ResponseBody
+    @PostMapping("/events/requestBody")
+    public Event eventRequestBody(@RequestBody Event event) {
+        return event;
+    }
+
+    @ResponseBody
+    @PostMapping("/events/modelAttribute")
+    public Event eventModelAttribute(@ModelAttribute Event event) { return event;}
+
+//    @GetMapping("/")
+//    public String main() {
+//        log.info("main method");
+//        return "index";
+//    }
+    @GetMapping("/index")
     public String main() {
         log.info("main method");
         return "index";
     }
 
+    @GetMapping("/hello")
+    public String hello() {
+        return "hello";
+    }
     @GetMapping("/status_code")
     @ResponseBody
     public String statusCodeTest(){

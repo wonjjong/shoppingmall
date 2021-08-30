@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/header :: header">
     <title>Hello</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -10,7 +11,20 @@
     <div class="jumbotron">
         <h1>HELLO SHOP</h1>
 
+        Authenticated username:
+        <div sec:authentication="name"></div>
+        Authenticated user roles:
+        <div sec:authentication="principal.authorities"></div>
+
+        <p class="lead"> <a class="btn btn-lg btn-secondary" href="/spring-security">spring security test page </a></p>
+
         <p class="lead"> <a th:href="@{/hello}">click</a> to see a greeting.</p>
+
+        <button type="button" class="btn btn-primary" sec:authorize="isAnonymous()"> Login </button>
+        <button type="button" class="btn btn-primary" sec:authorize="isAuthenticated()"> logout </button>
+
+
+        <button type="button" class="btn btn-primary"> </button>
 
         <p class="lead">회원 기능</p>
         <p>

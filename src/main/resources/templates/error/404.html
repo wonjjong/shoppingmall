@@ -1,0 +1,28 @@
+<!--
+timestamp : 오류 발생 시각
+status : HTTP Status Code
+error : 오류 발생 이유
+exception : 예외 클래스 이름
+message : 예외 메시지
+errors : BindingResult 예외로 발생한 모든 오류
+trace : 예외 스택 트레이스
+path : 오류가 발생했을때 요청한 URL 경로
+
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head> <meta charset="UTF-8" />
+    <title>Page Not Found</title> </head>
+<body>
+<h2>Sorry! Page not found.</h2>
+
+<h3 th:text="@{${error} + ' (' + ${path} + ')'}"></h3>
+
+<h3 class="h1" th:text="${'path: ' + path}"></h3>
+
+<h3 class="h1" th:text="${'error: ' + error}"></h3>
+
+<h3 class="h1" th:text="${'status: ' + status}"></h3>
+
+</body>
+</html>
