@@ -1,5 +1,12 @@
+
+#Security auto configuration off
+# spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration
+
 spring:
   datasource:
+
+    # url option in useSSL: DB에 SSL로 연결
+    # url option in allowPublicKeyRetrieval: 서버에서 RSA 공개키를 검색하거나 가져와야하는지
     url: jdbc:mysql://localhost:3306/shoppingmall_test?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root # 진짜 user로 썼다가 1시간 개삽질해서 죽일뻔
@@ -22,3 +29,6 @@ spring:
 #        #default_batch_fetch_size: 100
 #        #          show_sql: true #system.out을 통해 출력함
 #        format_sql: true
+  devtools:
+    livereload:
+      enabled: true

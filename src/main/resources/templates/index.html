@@ -15,6 +15,13 @@
     <div class="jumbotron">
         <h1>HELLO SHOP</h1>
 
+        Authenticated username:
+        <div sec:authentication="name"></div>
+        Authenticated user roles:
+        <div sec:authentication="principal.authorities"></div>
+
+        <p class="lead"> <a class="btn btn-lg btn-secondary" href="/spring-security">spring security test page </a></p>
+
         <p class="lead"> <a th:href="@{/member/main}"> /member/main</a> </p>
         <p class="lead"> <a th:href="@{/manager/main}"> /manager/main</a> </p>
         <p class="lead"> <a th:href="@{/admin/main}"> /admin/main</a> </p>
@@ -25,6 +32,12 @@
 
 
         <p class="lead"> <a th:href="@{/hello}">click</a> to see a greeting.</p>
+
+        <button type="button" class="btn btn-primary" sec:authorize="isAnonymous()"> Login </button>
+        <button type="button" class="btn btn-primary" sec:authorize="isAuthenticated()"> logout </button>
+
+
+        <button type="button" class="btn btn-primary"> </button>
 
         <p class="lead">회원 기능</p>
         <p>
