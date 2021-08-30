@@ -1,14 +1,28 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/header :: header">
-    <title>Hello</title>
+    <title>인덱스 페이지</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<div sec:authorize="isAuthenticated()">
+    <div sec:authentication="name">님 환영합니다.</div>
+</div>
+
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader" />
     <div class="jumbotron">
         <h1>HELLO SHOP</h1>
+
+        <p class="lead"> <a th:href="@{/member/main}"> /member/main</a> </p>
+        <p class="lead"> <a th:href="@{/manager/main}"> /manager/main</a> </p>
+        <p class="lead"> <a th:href="@{/admin/main}"> /admin/main</a> </p>
+        <p sec:authroize="isAuthenticated()">
+            <li><a th:href="@{/j_spring_security_logout}">/j_spring_security_logout</a></li>
+        </p>
+
+
 
         <p class="lead"> <a th:href="@{/hello}">click</a> to see a greeting.</p>
 
