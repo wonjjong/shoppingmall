@@ -18,6 +18,7 @@ public class MvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/css/**");
     }
 
+
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/hello").setViewName("hello");
         registry.addViewController("/members/createMemberForm").setViewName("/members/createMemberForm");
